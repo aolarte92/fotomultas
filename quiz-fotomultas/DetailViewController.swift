@@ -8,15 +8,45 @@
 
 import UIKit
 
+protocol DetailViewControllerDelegate:NSObjectProtocol{
+    
+    func updateTicket(ticket:TicketModel, withTicket price:Int)
+}
+
 class DetailViewController: UIViewController {
 
     //MARK:- IBOutles
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
+    @IBOutlet weak var priceTextField: UITextField!
+    @IBOutlet weak var editButton: UIButton!
     
     //MARK:- Properties
     var ticket = TicketModel()
+    var delegate:DetailViewControllerDelegate?
+    
+    //MARK: IBActions
+    
+    @IBAction func edit(sender: UIButton) {
+        self.view.endEditing(true)
+        if editButton.selected{
+            editButton.selected = false
+            if let priceInt = Int(priceTextField.text!){
+                    priceLabel.text = priceTextField.text
+                    priceLabel.hidden = false
+                    priceTextField.hidden = true
+                    delegate?.updateTicket(ticket, withTicket:priceInt)
+            }
+        }else{
+            editButton.selected = true
+            priceTextField.hidden = false
+            priceLabel.hidden = true
+            priceTextField.text = priceLabel.text
+        }
+        
+    }
+    
     
     //MARK- LifeCycle
     override func viewDidLoad() {
@@ -43,5 +73,10 @@ class DetailViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    //MARK: - Utils
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        self.view.endEditing(true)
+    }
 
 }

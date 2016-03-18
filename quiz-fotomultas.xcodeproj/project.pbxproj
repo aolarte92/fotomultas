@@ -60,17 +60,41 @@
 		069D67E01C8A587600E5A6CF /* quiz-fotomultas */ = {
 			isa = PBXGroup;
 			children = (
+				DB0A49C51C9C4F0800901209 /* Controller */,
+				DB0A49C41C9C4F0100901209 /* Model */,
+				DB0A49C31C9C4EF600901209 /* View */,
 				069D67E11C8A587600E5A6CF /* AppDelegate.swift */,
-				069D67E31C8A587600E5A6CF /* ViewController.swift */,
-				06C865681C8A5FC4002D82AC /* TicketViewController.swift */,
-				06C8656C1C8A6436002D82AC /* DetailViewController.swift */,
-				06C8656A1C8A6054002D82AC /* TicketModel.swift */,
-				069D67E51C8A587600E5A6CF /* Main.storyboard */,
 				069D67E81C8A587600E5A6CF /* Assets.xcassets */,
-				069D67EA1C8A587600E5A6CF /* LaunchScreen.storyboard */,
 				069D67ED1C8A587600E5A6CF /* Info.plist */,
 			);
 			path = "quiz-fotomultas";
+			sourceTree = "<group>";
+		};
+		DB0A49C31C9C4EF600901209 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				069D67E51C8A587600E5A6CF /* Main.storyboard */,
+				069D67EA1C8A587600E5A6CF /* LaunchScreen.storyboard */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		DB0A49C41C9C4F0100901209 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				06C8656A1C8A6054002D82AC /* TicketModel.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		DB0A49C51C9C4F0800901209 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				069D67E31C8A587600E5A6CF /* ViewController.swift */,
+				06C865681C8A5FC4002D82AC /* TicketViewController.swift */,
+				06C8656C1C8A6436002D82AC /* DetailViewController.swift */,
+			);
+			name = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

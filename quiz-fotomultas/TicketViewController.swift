@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TicketViewController: UIViewController , UITableViewDataSource, UITableViewDelegate
+class TicketViewController: UIViewController , UITableViewDataSource, UITableViewDelegate, DetailViewControllerDelegate
 {
 
     // MARK: - Properties
@@ -45,6 +45,7 @@ class TicketViewController: UIViewController , UITableViewDataSource, UITableVie
         //otra opcion
         if let detailVC = segue.destinationViewController as? DetailViewController{
             if let ticket = sender as? TicketModel{
+                detailVC.delegate = self
                 detailVC.ticket = ticket//pendiente
             }
             
@@ -72,6 +73,18 @@ class TicketViewController: UIViewController , UITableViewDataSource, UITableVie
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath){
         let ticket = tickets[indexPath.row]
         self.performSegueWithIdentifier("detail", sender: ticket)
+    }
+    
+    
+    //MARK: - DetailViewControllerDelegate
+    func updateTicket(ticket: TicketModel, withTicket price: Int) {
+        let index = tickets.indexOf { $0 === ticket }
+        
+        if index != nil{
+            ticket.price = price
+            tickets[index!] = ticket
+            tableView.reloadData()
+        }
     }
 
 }
